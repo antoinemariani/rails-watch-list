@@ -1,18 +1,24 @@
+<%# <div class="banner-image" ><%= cl_image_tag @list.photo.key, height: 200, width: 100, crop: :fill, gravity: :face %>
 
-<h1><%= @list.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key, height: 300, width: 2000, crop: :fill, gravity: :face if @list.photo.key %>');">
+</div>
 
-<p><%= link_to "Add a bookmark", new_list_bookmark_path(@list, @bookmark) %></p>
+<div class="container pt-3">
+  <h1><%= @list.name %></h1>
 
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      Movie : <%= bookmark.movie.title %> //
-      Comment : <%= bookmark.comment %>
-      <%= link_to "",
-          bookmark_path(bookmark),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-          class: "fa fa-trash"
-        %>
-    </li>
-    <% end %>
-</ul>
+  <p><%= link_to "Add a bookmark", new_list_bookmark_path(@list, @bookmark) %></p>
+
+  <ul>
+    <% @list.bookmarks.each do |bookmark| %>
+      <li>
+        Movie : <%= bookmark.movie.title %> //
+        Comment : <%= bookmark.comment %>
+        <%= link_to "",
+            bookmark_path(bookmark),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+            class: "fa fa-trash"
+          %>
+      </li>
+      <% end %>
+  </ul>
+</div>
