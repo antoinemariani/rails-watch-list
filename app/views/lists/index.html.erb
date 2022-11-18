@@ -3,8 +3,8 @@
 
 <p><%= link_to "Add a new list", new_list_path %></p>
 
-<ul>
   <% @lists.each do |list| %>
-  <li><%= link_to list.name, list_path(list) %></li>
+      <%= link_to list_path(list) do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.tap-poitiers.com/wp-content/thumbnails/uploads/2021/09/pierrot-le-fou-tt-width-1520-height-1067-crop-1-bgcolor-000000.jpeg)"><%= list.name %></div>
+      <% end %>
   <% end %>
-</ul>
