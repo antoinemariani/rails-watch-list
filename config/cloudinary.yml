@@ -1,2 +1,5 @@
 production:
   cloud_name: "cloudinary"
+  api_key: "699889244121936"
+  api_secret: "3aBEV9x4ZmhtWgCbTmnf0yxcwwI"
+  secure: true
