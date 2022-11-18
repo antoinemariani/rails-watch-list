@@ -8,17 +8,21 @@
 
   <p><%= link_to "Add a bookmark", new_list_bookmark_path(@list, @bookmark) %></p>
 
-  <ul>
     <% @list.bookmarks.each do |bookmark| %>
-      <li>
-        Movie : <%= bookmark.movie.title %> //
-        Comment : <%= bookmark.comment %>
-        <%= link_to "",
-            bookmark_path(bookmark),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-            class: "fa fa-trash"
-          %>
-      </li>
-      <% end %>
-  </ul>
+      <div class="card-product">
+        <img src="<%= bookmark.movie.poster_url%>"/>
+        <div class="card-product-infos">
+          <h2><%= bookmark.movie.title %></h2><p><%= "(#{bookmark.movie.rating})" %></p>
+          <p><%= bookmark.movie.overview %></p>
+          <p>Note perso : <em><%= bookmark.comment %></em></p>
+        </div>
+        <div class="card-product-delete">
+          <%= link_to "",
+              bookmark_path(bookmark),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+              class: "fa fa-trash"
+            %>
+        </div>
+      </div>
+    <% end %>
 </div>
